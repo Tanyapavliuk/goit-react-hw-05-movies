@@ -1,0 +1,12 @@
+.transactionHistory{
+    border: 1px solid #ccc;
+}
+.transactionThead{
+border: 1px solid #ccc;
+}
+.row{
+    background: #ccc;
+}
+.item{
+    padding: 20px 30px;
+}
