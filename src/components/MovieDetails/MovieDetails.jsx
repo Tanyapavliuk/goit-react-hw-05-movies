@@ -12,14 +12,13 @@ const MovieDetails = () => {
   const params = useParams();
   const id = params.movieId;
 
-  const get = async () => {
-    const data = await getFetchById(id);
-    return data;
-  };
-
   useEffect(() => {
-    get().then(data => setMovie(data));
-  }, [id, get]);
+    const get = async () => {
+      const data = await getFetchById(id);
+      setMovie(data);
+    };
+    get();
+  }, [id]);
 
   console.log(movie);
   const markap = !movie ? (
