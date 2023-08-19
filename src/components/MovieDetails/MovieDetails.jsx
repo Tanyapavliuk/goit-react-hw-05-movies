@@ -19,7 +19,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     get().then(data => setMovie(data));
-  }, [id, get]);
+  }, [id]);
 
   console.log(movie);
   const markap = !movie ? (
