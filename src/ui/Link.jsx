@@ -1,7 +1,7 @@
 import { LinkLook } from './Link.styled';
 import { FiPlay } from 'react-icons/fi';
 
-const Link = ({ children, ...props }) => {
+const LinkStyled = ({ children, ...props }) => {
   return (
     <LinkLook {...props}>
       <p>{children}</p>
@@ -10,4 +10,4 @@ const Link = ({ children, ...props }) => {
   );
 };
 
-export default Link;
+export default LinkStyled;

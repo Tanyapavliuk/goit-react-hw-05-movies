@@ -1,16 +1,22 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { FiArrowLeft } from 'react-icons/fi';
 
 import { ThreeDots } from 'react-loader-spinner';
 
 import getFetchById from 'servises/fetchById';
 import MovieMarkap from 'components/MovieMarkap/MovieMarkap';
+import { StyledLink } from 'ui/Link.styled';
+import { MovieWrap } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState();
 
+  const location = useLocation();
+  const backRef = useRef(location.state?.from ?? '/');
   const params = useParams();
   const id = params.movieId;
+  console.log(location);
 
   useEffect(() => {
     const get = async () => {
@@ -31,7 +37,13 @@ const MovieDetails = () => {
       visible={true}
     />
   ) : (
-    <MovieMarkap data={movie} />
+    <MovieWrap>
+      <StyledLink to={backRef.current}>
+        <FiArrowLeft style={{ width: 20, height: 20 }} />
+        <p>Go back</p>
+      </StyledLink>
+      <MovieMarkap data={movie} />
+    </MovieWrap>
   );
   return markap;
 };

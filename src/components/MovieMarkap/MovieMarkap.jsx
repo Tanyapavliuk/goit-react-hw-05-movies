@@ -1,12 +1,21 @@
 import { FiFilm } from 'react-icons/fi';
 
-import Title from 'ui/Title';
-import { Wrapper, ContentWrapper, PosterWrapper } from './MovieMarkap.styled';
-import Link from 'ui/Link';
+import LinkStyled from 'ui/Link';
 import Text from 'ui/Text';
+import Title from 'ui/Title';
+
+import { StyledLink } from 'ui/Link.styled';
+import {
+  Wrapper,
+  ContentWrapper,
+  PosterWrapper,
+  Box,
+} from './MovieMarkap.styled';
+import { Outlet } from 'react-router-dom';
 
 const MovieMarkap = ({ data }) => {
-  const { title, homepage, genres, vote_average, poster_path, overview } = data;
+  const { id, title, homepage, genres, vote_average, poster_path, overview } =
+    data;
 
   return (
     <Wrapper>
@@ -28,8 +37,14 @@ const MovieMarkap = ({ data }) => {
             <li key={el.name}>{el.name}</li>
           ))}
         </ul>
-        <Link href={homepage}>Дивитись тут</Link>
+        <LinkStyled href={homepage}>Дивитись тут</LinkStyled>
+        <Box>
+          <StyledLink to={`/movies/${id}/cast`}>Actors</StyledLink>
+          <StyledLink to={`/movies/${id}/reviews`}>Reviews</StyledLink>
+        </Box>
       </ContentWrapper>
+
+      <Outlet />
     </Wrapper>
   );
 };

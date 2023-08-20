@@ -1,4 +1,4 @@
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { FiFilm } from 'react-icons/fi';
 import { IconWrap, InfoWrap, Input, Item, InputWrap } from './Search.styled';
 import { IoSearchOutline } from 'react-icons/io5';
@@ -13,6 +13,7 @@ const Sesrch = () => {
   const [foundMovies, setFoundMovies] = useState([]);
   const [status, setStatus] = useState('');
   const params = searchParams.get('movie') ?? ''; //отримуємо значення параметру, якщо немає значення = ""
+  const location = useLocation(); //Повертає об'єкт розташування
 
   //------
   const checkSearchParam = evt => {
@@ -28,6 +29,15 @@ const Sesrch = () => {
         setStatus('error');
       });
   };
+
+  useEffect(() => {
+    getFetchByName(params)
+      .then(data => setFoundMovies(data.results))
+      .catch(() => {
+        setStatus('error');
+      });
+  }, [params]);
+
   useEffect(() => {
     console.log(foundMovies);
   }, [foundMovies]);
@@ -38,7 +48,11 @@ const Sesrch = () => {
             const parts = release_date.split('-');
             const formattedDate = `${parts[2]}.${parts[1]}.${parts[0]}`;
             return (
-              <Link to={`/movies/${id}`} style={{ color: '#ffffff' }}>
+              <Link
+                to={`/movies/${id}`}
+                style={{ color: '#ffffff' }}
+                state={{ from: location }} //в state записуємо поле from:звідки прийшов користувач
+              >
                 <Item key={id}>
                   <img
                     src={`https://image.tmdb.org/t/p/w500${poster_path}`}
