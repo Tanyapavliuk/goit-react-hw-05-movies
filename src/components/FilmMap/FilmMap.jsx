@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import getTrandingMovies from 'servises/fetchMovies';
 import { Item, ListFilm, TitleFilm } from './FilmMap.styled';
 import { Link } from 'react-router-dom';
+import { ThreeDots } from 'react-loader-spinner';
 
 const FilmMap = () => {
   const [trandingMovies, setTrandingMovies] = useState();
@@ -32,7 +33,14 @@ const FilmMap = () => {
       );
     })
   ) : (
-    <p>Sory</p>
+    <ThreeDots
+      height="80"
+      width="80"
+      radius="9"
+      color="#7a1f5c"
+      ariaLabel="three-dots-loading"
+      visible={true}
+    />
   );
 
   return <ListFilm>{TrandingMovie}</ListFilm>;

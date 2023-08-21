@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   grid-template-rows: 450px 1fr;
 
   padding-top: 30px;
+  align-items: end;
 `;
 
 export const ContentWrapper = styled.div`
@@ -14,6 +15,7 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   gap: 7px;
 `;
 export const PosterWrapper = styled.div`

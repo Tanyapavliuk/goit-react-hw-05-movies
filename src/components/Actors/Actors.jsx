@@ -16,9 +16,9 @@ const Actors = () => {
     get();
   }, [movieId]);
   const ActorsList =
-    actors.length < 18
+    actors.length < 20
       ? actors.map(el => <OneActor data={el} />)
-      : actors.slice(0, 18).map(el => <OneActor data={el} />);
+      : actors.slice(0, 20).map(el => <OneActor data={el} />);
 
   console.log(actors);
 

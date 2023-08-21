@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Item = styled.li`
   display: grid;
-  grid-template-columns: 111px 250px;
+  grid-template-columns: 111px 200px;
   grid-template-rows: 155px;
 
   border: 1px solid #e13c52;

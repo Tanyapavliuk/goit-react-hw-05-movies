@@ -9,12 +9,14 @@ import Text from 'ui/Text';
 import getFetchByName from 'servises/fetchByName';
 import Error from 'components/Error/Error';
 
-const Sesrch = () => {
+const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [foundMovies, setFoundMovies] = useState([]);
   const [status, setStatus] = useState('');
   const params = searchParams.get('movie') ?? ''; //отримуємо значення параметру, якщо немає значення = ""
   const location = useLocation(); //Повертає об'єкт розташування
+  const img =
+    'https://media.istockphoto.com/vectors/page-not-found-error-404vector-template-vector-id643266374?k=6&m=643266374&s=612x612&w=0&h=FRFai8A7svnignh3iARisxWEBe6EH2ZF_QA8Irv2lSQ=';
 
   //------
   const checkSearchParam = evt => {
@@ -42,6 +44,7 @@ const Sesrch = () => {
   useEffect(() => {
     console.log(foundMovies);
   }, [foundMovies]);
+
   const markap =
     foundMovies !== []
       ? foundMovies.map(
@@ -56,8 +59,13 @@ const Sesrch = () => {
               >
                 <Item key={id}>
                   <img
-                    src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                    src={
+                      poster_path
+                        ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                        : img
+                    }
                     alt={title}
+                    style={{ width: '100%', height: '100%' }}
                   />
                   <InfoWrap>
                     <Title style={{ fontSize: 24 }}>{title}</Title>
@@ -107,4 +115,4 @@ const Sesrch = () => {
   );
 };
 
-export default Sesrch;
+export default Search;
