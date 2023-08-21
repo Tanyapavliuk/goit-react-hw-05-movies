@@ -17,6 +17,10 @@ export const ContentWrapper = styled.div`
   align-items: flex-start;
 
   gap: 7px;
+  @media (max-width: 1200px) {
+    height: 450px;
+    overflow-y: scroll;
+  }
 `;
 export const PosterWrapper = styled.div`
   width: 300px;

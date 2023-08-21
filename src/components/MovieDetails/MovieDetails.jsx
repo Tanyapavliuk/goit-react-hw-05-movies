@@ -16,7 +16,6 @@ const MovieDetails = () => {
   const backRef = useRef(location.state?.from ?? '/');
   const params = useParams();
   const id = params.movieId;
-  console.log(location);
 
   useEffect(() => {
     const get = async () => {
@@ -26,7 +25,6 @@ const MovieDetails = () => {
     get();
   }, [id]);
 
-  console.log(movie);
   const markap = !movie ? (
     <ThreeDots
       height="80"
