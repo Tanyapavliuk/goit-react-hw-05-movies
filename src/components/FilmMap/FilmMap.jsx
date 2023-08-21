@@ -24,7 +24,11 @@ const FilmMap = () => {
         <Item key={data.id}>
           <Link to={`/movies/${data.id}`}>
             <img
-              src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`}
+              src={
+                data.poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${data.poster_path}`
+                  : 'https://ideipodarkov.net/reimg/data/gifts/20/715x520/1505120-6139.jpg'
+              }
               alt={call}
             />
           </Link>

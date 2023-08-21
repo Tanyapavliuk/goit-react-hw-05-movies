@@ -14,15 +14,15 @@ import {
 const MovieMarkap = ({ data }) => {
   const { id, title, homepage, genres, vote_average, poster_path, overview } =
     data;
-  const img =
-    'https://internetdevels.com/sites/default/files/public/blog_preview/404_page_cover.jpg';
 
   return (
     <Wrapper>
       <PosterWrapper>
         <img
           src={
-            poster_path ? `https://image.tmdb.org/t/p/w500/${poster_path}` : img
+            poster_path !== null
+              ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+              : 'https://ideipodarkov.net/reimg/data/gifts/20/715x520/1505120-6139.jpg'
           }
           alt={title}
           style={{ width: '100%', height: '100%' }}
