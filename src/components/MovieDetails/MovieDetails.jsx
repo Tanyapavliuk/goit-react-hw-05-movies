@@ -8,9 +8,11 @@ import getFetchById from 'servises/fetchById';
 import MovieMarkap from 'components/MovieMarkap/MovieMarkap';
 import { StyledLink } from 'ui/Link.styled';
 import { MovieWrap } from './MovieDetails.styled';
+import Error from 'components/Error/Error';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState();
+  const [error, setError] = useState();
 
   const location = useLocation();
   const backRef = useRef(location.state?.from ?? '/');
@@ -19,21 +21,28 @@ const MovieDetails = () => {
 
   useEffect(() => {
     const get = async () => {
-      const data = await getFetchById(id);
-      setMovie(data);
+      getFetchById(id)
+        .then(data => setMovie(data))
+        .catch(e => setError(e));
     };
     get();
   }, [id]);
 
   const markap = !movie ? (
-    <ThreeDots
-      height="80"
-      width="80"
-      radius="9"
-      color="#7a1f5c"
-      ariaLabel="three-dots-loading"
-      visible={true}
-    />
+    <>
+      {!error && (
+        <ThreeDots
+          height="80"
+          width="80"
+          radius="9"
+          color="#7a1f5c"
+          ariaLabel="three-dots-loading"
+          visible={true}
+        />
+      )}
+
+      {error && <Error>Not found the information about this movie</Error>}
+    </>
   ) : (
     <MovieWrap>
       <StyledLink to={backRef.current}>
