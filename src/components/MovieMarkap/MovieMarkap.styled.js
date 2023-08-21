@@ -5,6 +5,10 @@ export const Wrapper = styled.div`
   grid-template-rows: 450px 1fr;
 
   padding-top: 30px;
+  @media (max-width: 678px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const ContentWrapper = styled.div`
