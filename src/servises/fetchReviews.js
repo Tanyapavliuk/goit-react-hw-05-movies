@@ -1,4 +1,4 @@
-const getTrandingMovies = async () => {
+export const getRew = async movieId => {
   const options = {
     method: 'GET',
     headers: {
@@ -9,14 +9,12 @@ const getTrandingMovies = async () => {
   };
 
   const response = await fetch(
-    'https://api.themoviedb.org/3/trending/all/day?language=en-US',
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`,
     options
   );
   if (!response.ok) {
-    throw new Error('smth was wrong');
+    throw new Error('Not found reviews');
   }
   const data = await response.json();
   return data;
 };
-
-export default getTrandingMovies;

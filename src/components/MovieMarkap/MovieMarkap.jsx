@@ -37,7 +37,7 @@ const MovieMarkap = ({ data }) => {
             <li key={el.name}>{el.name}</li>
           ))}
         </ul>
-        <LinkStyled href={homepage}>Дивитись тут</LinkStyled>
+        <LinkStyled href={homepage}>Watch here</LinkStyled>
         <Box>
           <StyledLink to={`/movies/${id}/cast`}>Actors</StyledLink>
           <StyledLink to={`/movies/${id}/reviews`}>Reviews</StyledLink>

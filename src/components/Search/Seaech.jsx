@@ -7,6 +7,7 @@ import { ListFilm } from 'components/FilmMap/FilmMap.styled';
 import Title from 'ui/Title';
 import Text from 'ui/Text';
 import getFetchByName from 'servises/fetchByName';
+import Error from 'components/Error/Error';
 
 const Sesrch = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -97,7 +98,11 @@ const Sesrch = () => {
           <IoSearchOutline style={{ width: 30, height: 30 }} />
         </IconWrap>
       </InputWrap>
-      {status !== 'error' ? <ListFilm>{markap}</ListFilm> : <p>Not found</p>}
+      {status !== 'error' ? (
+        <ListFilm>{markap}</ListFilm>
+      ) : (
+        <Error>Not found</Error>
+      )}
     </>
   );
 };
