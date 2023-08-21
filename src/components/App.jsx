@@ -7,6 +7,7 @@ import SharedLayout from './SharedLayout/SharedLayout';
 import MovieDetails from './MovieDetails/MovieDetails';
 import Actors from './Actors/Actors';
 import Reviews from './Reviews/Reviews';
+import Error from './Error/Error';
 
 export const App = () => {
   return (
@@ -20,6 +21,7 @@ export const App = () => {
               <Route path="cast" element={<Actors />} />
               <Route path="reviews" element={<Reviews />} />
             </Route>
+            <Route path="*" element={<Error>Not Found 404</Error>} />
           </Route>
         </Route>
       </Routes>
