@@ -1,12 +1,14 @@
+import { useEffect, useState } from 'react';
 import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { FiFilm } from 'react-icons/fi';
-import { IconWrap, InfoWrap, Input, Item, InputWrap } from './Search.styled';
 import { IoSearchOutline } from 'react-icons/io5';
-import { useEffect, useState } from 'react';
+
+import getFetchByName from 'servises/fetchByName';
+
+import { IconWrap, InfoWrap, Input, Item, InputWrap } from './Search.styled';
 import { ListFilm } from 'components/FilmMap/FilmMap.styled';
 import Title from 'ui/Title';
 import Text from 'ui/Text';
-import getFetchByName from 'servises/fetchByName';
 import Error from 'components/Error/Error';
 
 const Search = () => {
@@ -109,7 +111,7 @@ const Search = () => {
       {status !== 'error' ? (
         <ListFilm>{markap}</ListFilm>
       ) : (
-        <Error>Not found</Error>
+        <Error>Not found movies</Error>
       )}
     </>
   );

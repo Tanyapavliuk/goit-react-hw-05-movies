@@ -15,6 +15,7 @@ const Actors = () => {
     };
     get();
   }, [movieId]);
+
   const ActorsList =
     actors.length < 20
       ? actors.map(el => <OneActor data={el} />)
