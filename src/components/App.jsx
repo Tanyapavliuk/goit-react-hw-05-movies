@@ -1,13 +1,15 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Movies from 'pages/Movie/Movie';
 import Home from 'pages/Home/Home';
-
 import SharedLayout from './SharedLayout/SharedLayout';
-import MovieDetails from './MovieDetails/MovieDetails';
-import Actors from './Actors/Actors';
-import Reviews from './Reviews/Reviews';
-import Error from './Error/Error';
+
+//----ліниве завантаження компонентів----//
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const Actors = lazy(() => import('./Actors/Actors'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
+const Error = lazy(() => import('./Error/Error'));
 
 export const App = () => {
   return (

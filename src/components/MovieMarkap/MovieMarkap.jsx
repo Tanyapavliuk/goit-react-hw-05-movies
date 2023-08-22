@@ -1,5 +1,8 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { FiFilm } from 'react-icons/fi';
+import { ThreeDots } from 'react-loader-spinner';
+
 import LinkStyled from 'ui/Link';
 import Text from 'ui/Text';
 import Title from 'ui/Title';
@@ -47,7 +50,20 @@ const MovieMarkap = ({ data }) => {
         </Box>
       </ContentWrapper>
 
-      <Outlet />
+      <Suspense
+        fallback={
+          <ThreeDots
+            height="80"
+            width="80"
+            radius="9"
+            color="#7a1f5c"
+            ariaLabel="three-dots-loading"
+            visible={true}
+          />
+        }
+      >
+        {<Outlet />}
+      </Suspense>
     </Wrapper>
   );
 };
