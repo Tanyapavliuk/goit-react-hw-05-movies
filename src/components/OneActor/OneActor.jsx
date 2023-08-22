@@ -1,11 +1,11 @@
 import { Info, Item, WrapperContent } from './OneActor.styled';
 
 const OneActor = ({ data }) => {
-  const { name, id, character, popularity, profile_path } = data;
+  const { name, character, popularity, profile_path } = data;
   const img =
     'https://internetdevels.com/sites/default/files/public/blog_preview/404_page_cover.jpg';
   return (
-    <Item key={id}>
+    <Item>
       <img
         src={
           profile_path ? `https://image.tmdb.org/t/p/w500/${profile_path}` : img

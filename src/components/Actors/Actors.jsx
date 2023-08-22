@@ -18,8 +18,8 @@ const Actors = () => {
 
   const ActorsList =
     actors.length < 20
-      ? actors.map(el => <OneActor data={el} />)
-      : actors.slice(0, 20).map(el => <OneActor data={el} />);
+      ? actors.map(el => <OneActor data={el} key={el.id} />)
+      : actors.slice(0, 20).map(el => <OneActor data={el} key={el.id} />);
 
   console.log(actors);
 

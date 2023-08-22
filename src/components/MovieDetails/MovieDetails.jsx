@@ -16,10 +16,12 @@ const MovieDetails = () => {
 
   const location = useLocation();
   const backRef = useRef(location.state?.from ?? '/');
+
   const params = useParams();
   const id = params.movieId;
 
   useEffect(() => {
+    if (!id) return;
     const get = async () => {
       getFetchById(id)
         .then(data => setMovie(data))
